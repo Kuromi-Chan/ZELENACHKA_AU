@@ -7,7 +7,7 @@ from queue import Queue
 from selenium.webdriver.support.ui import WebDriverWait
 from actions.launcher import Settings
 from actions.launcher import Launch
-# from actions.launcher import Login
+from actions.launcher import Login
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -56,14 +56,14 @@ def participiating(self):
 
             sleep(5)
 
-            # if Login.authorization(self) != True:
-            #     logger.error("Ошибка с авторизацией")
-            #     Telegram.send_notification(self, f'Ошибка с авторизацией')
-            #     # self.driver.quit()
-            #     input('Для продолжения нажми любую клавишу')
-            #     # script_exit(1)
-            # else:
-            #     pass
+            if Login.authorization(self) != True:
+                logger.error("Ошибка с авторизацией")
+                Telegram.send_notification(self, f'Ошибка с авторизацией')
+                # self.driver.quit()
+                input('Для продолжения нажми любую клавишу')
+                # script_exit(1)
+            else:
+                pass
 
             logger.success("Скрипт начал работу")
             Telegram.send_notification(self, "Скрипт начал работу")

@@ -8,10 +8,13 @@ class Login:
         try:
             self.driver.refresh()
             self.driver.delete_all_cookies()
-            cookies = [ {"name": "zelenka.guru_xf_tc_lmad", "value": self.xf_tc_lmad, "domain": self.domain, "path": "/", "expiry": 3889363645},
-                        {"name": "xf_tfa_trust", "value": self.xf_tfa_trust, "domain": self.domain, "path": "/", "expiry": 3889363645},
-                        {"name": "xf_user", "value": self.xf_user, "domain": self.domain, "path": "/", "expiry": 3876403645},
-                        {"name": "xf_viewedContestsHidden", "value": "1", "domain": self.domain, "path": "/", "expiry": 3876403645}]
+            cookies = [ 
+                {"name": "xf_logged_in", "value" :"1","domain": self.domain, "path": "/", "expiry": 3889363645},
+                {"name": "xf_session","value":self.xf_session,"domain": self.domain, "path": "/", "expiry": 3889363645},
+                {"name": "zelenka.guru_xf_tc_lmad", "value": self.xf_tc_lmad, "domain": self.domain, "path": "/", "expiry": 3889363645},
+                {"name": "xf_tfa_trust", "value": self.xf_tfa_trust, "domain": self.domain, "path": "/", "expiry": 3889363645},
+                {"name": "xf_user", "value": self.xf_user, "domain": self.domain, "path": "/", "expiry": 3876403645},
+                {"name": "xf_viewedContestsHidden", "value": "1", "domain": self.domain, "path": "/", "expiry": 3876403645}]
 
             for cookie in cookies: 
                 self.driver.add_cookie(cookie)
