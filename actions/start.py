@@ -50,18 +50,18 @@ def participiating(self):
             else:
                 pass
 
-            new_captcha_instance = NewCaptcha(driver = self.driver, debug = self.debug)
-            captcha_thread = Thread(target=new_captcha_instance.find_captcha)
-            captcha_thread.start()
+            # new_captcha_instance = NewCaptcha(driver = self.driver, debug = self.debug)
+            # captcha_thread = Thread(target=new_captcha_instance.find_captcha)
+            # captcha_thread.start()
 
             sleep(5)
 
             if Login.authorization(self) != True:
                 logger.error("Ошибка с авторизацией")
                 Telegram.send_notification(self, f'Ошибка с авторизацией')
-                # self.driver.quit()
+                self.driver.quit()
                 input('Для продолжения нажми любую клавишу')
-                # script_exit(1)
+                script_exit(1)
             else:
                 pass
 
